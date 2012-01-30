@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>      
+        <title>文本转换为图片</title>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+        <link href="/dropbox/web_develop/elastic/screen.css" type="text/css" rel="stylesheet" />               
+    </head>
+    <body>
+    
+       
+        <form name="p2tform">
+            <textarea class="input" style="max-height: 1000px;max-width: 600px" name="myarea">text to picture</textarea>
+            <p>
+            <button type="submit" onclick="return add_text_pic_link();">sub</button><p>
+
+        </form>
+
+        <div class="stream-items">
+        </div>
+
+        <script type="text/javascript" 
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"> 
+        </script>
+        <script 
+            src="/dropbox/web_develop/elastic/jquery.elastic.source.js" 
+            type="text/javascript" charset="utf-8">
+        </script>
+        <script type="text/javascript">
+            // <![CDATA[
+            $$(document).ready(function(){           
+                $$('textarea').elastic();
+                $$('textarea').trigger('update');
+            }); 
+            // ]]>
+        </script>
+        <script type="text/javascript">
+            function add_text_pic_link() {  
+                var dataString = 'myarea=' + encodeURIComponent($$('textarea').val());
+                //alert(dataString);
+                var message1 = $$.ajax({
+                   type: "POST",
+                   url: "/t2p",
+                   data: dataString,
+                   async: false 
+                }).responseText;
+                $$('.stream-items').prepend($$(message1));
+                return false;
+        }
+        </script>
+               
+    </body>
+</html>

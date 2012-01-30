@@ -1,0 +1,73 @@
+$def with (links)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>todo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+
+<body>
+
+<script type="text/javascript" 
+        src="//2099b85b.dotcloud.com/dp/jquery.min.js">
+</script>
+
+
+<script type="text/javascript">
+(function($$, window) {
+
+    $$(function() { 
+    //alert('hi i\'m ready');
+    var message1 = $$.ajax({
+            type: "POST",
+            url: "/todo",
+            async: false, 
+         }).responseText;
+        $$('#tolinks').prepend($$(message1));
+
+    });
+})(jQuery,this);
+</script>
+
+<script type="text/javascript">
+function add() {  
+    try{
+    var dataString = 'status=' +
+        encodeURIComponent($$("input#status").val());
+    var message1 = $$.ajax({
+		   type: "POST",
+		   url: "/todo/add",
+		   data: dataString,
+	   	   async: false 
+		}).responseText;
+   $$('#tolinks').prepend($$(message1));
+   $$('#status').val('');
+   //alert(message1);
+   }
+   catch(e){
+   }
+   return false;
+ 
+}
+</script>
+
+
+<form id=addlinkform>
+<p><input type="text" name="status" id="status" />
+<input class="buttonadd" type="submit" value="Add" onclick="return add();"/>
+</p>
+</form>
+<div class="pagination toppagination"></div>
+
+<div class=links id=tolinks>
+    $for link,proxylink in links:
+        <div><a target="_blank" href="$link">$link</a></div>
+        <div><a target="_blank" href="$proxylink">proxy</a></div>
+        </br>
+ </div>
+
+<div class="pagination toppagination"></div>    
+     
+</body>
+</html>

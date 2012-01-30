@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>      
+        <title>autopac</title>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+        <link href="/dropbox/web_develop/elastic/screen.css" type="text/css" rel="stylesheet" />               
+    </head>
+    <body>
+    
+       
+        <form name="t_auth" action="/autopac" method="post">
+            <textarea class="input" style="max-height: 200px;" name="myarea">This textarea is going to grow when you fill it with text. Just type a few more words in it and you will see.</textarea>
+            <p>
+            Proxy Type:
+            <input type=radio name=ptype value="SOCKS5"> SOCKS5
+            <input type=radio name=ptype value="HTTP"> HTTP<p>
+            Port:
+            <input type=text name=port maxlength=5><p>
+            <button type="submit">sub</button><p>
+
+        </form>
+
+
+        <script type="text/javascript" 
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"> 
+        </script>
+        <script 
+            src="/dropbox/web_develop/elastic/jquery.elastic.source.js" 
+            type="text/javascript" charset="utf-8">
+        </script>
+        <script type="text/javascript">
+            // <![CDATA[
+            $$(document).ready(function(){           
+                $$('textarea').elastic();
+                $$('textarea').trigger('update');
+            }); 
+            // ]]>
+        </script>
+        
+
+        
+    </body>
+</html>
