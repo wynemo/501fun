@@ -17,3 +17,4 @@
         pos = each.end()        
     new_str += s1[pos:]
     return new_str
+

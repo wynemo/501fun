@@ -8,6 +8,7 @@ import img
 from convert_link import convert_link
 from config import settings
 import urllib2
+import css
 
 render = settings.render
 std_headers = settings.std_headers
@@ -59,6 +60,7 @@ class proxy:
         s2 = img.get_img_parts(s2)    
         head_obj = re.search(r'<head.*</head>',s2,re.S|re.I|re.X)
         if head_obj:
+            css_urls = css.handle_css(head_obj.group(),i1.url)
             char_obj = re.search(r'<meta[^<]*?charset=.*?/>',head_obj.group(),re.S|re.X|re.I)
             char_type = ''
             if char_obj:
@@ -69,7 +71,9 @@ class proxy:
             if title_obj:
                 title_type = title_obj.group()
 
-            s2 = s2.replace(head_obj.group(),'<head>' + char_type + title_type + '</head>',1)
+            s2 = s2.replace(head_obj.group(),
+            '<head>' + char_type + title_type + css_urls + '</head>',
+            1)
             return convert_link(s2)#link proxy
         else:
             if url.startswith('http://t.co') or url.startswith('https://t.co'):#god damned t.co
@@ -77,3 +81,4 @@ class proxy:
                 if(new_url and len(new_url)):
                     raise web.seeother('/proxy?url=' + urllib.quote_plus(new_url))#iter
             return convert_link(s2)
+
