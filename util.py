@@ -22,9 +22,9 @@ def get_chs_lnk(str1,plus=1):
         return str1
     while o1:
         if plus == 1:
-            _1 = (urllib.quote_plus(o1.group().encode('utf-8'))).decode('utf-8')
+            _1 = my_quote_plus(o1.group().encode('utf-8')).decode('utf-8')
         else:
-            _1 = (urllib.quote(o1.group().encode('utf-8'))).decode('utf-8')
+            _1 = urllib.quote(o1.group().encode('utf-8')).decode('utf-8')
         u1 = u1.replace(o1.group(),_1)
         #o1 = re.search(ur'[\u4e00-\u9fff]+',u1)
         o1 = re.search(ur'[^\w\~\#\:\.\?\+\=\&\%\@\-\\\/]+',u1)
@@ -191,4 +191,20 @@ def t2p1(u_text):
 
 def isnotc0orc1(u_str):
     import re
-    return re.search(ur'[^\u0000-\u009f]+',u_str)    
+    return re.search(ur'[^\u0000-\u009f]+',u_str)   
+
+def get_base_url(url):
+    import re
+    re_cos = re.S|re.I
+    rule5 = r'\w+://([\w-]+\.)+[\w-]+'
+    o5 = re.search(rule5,url,re_cos)
+    if o5:
+        return o5.group()
+    return None    
+
+def my_quote_plus(url):
+    import urllib
+    return urllib.quote_plus(url).replace('+','%20')
+
+def replace_amp(str1):
+    return str1.replace('&amp;','&')
