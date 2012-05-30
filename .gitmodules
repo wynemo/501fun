@@ -1,3 +1,6 @@
 [submodule "proxy"]
 	path = proxy
 	url = git://github.com/wynemo/501fun_proxy.git
+[submodule "dictmd"]
+	path = dictmd
+	url = git://github.com/wynemo/dictmd.git
