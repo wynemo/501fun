@@ -1,0 +1,55 @@
+$def with(md)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        $if md: 
+            <title>word_markdown - $md[0][3:]</title>
+        $else:
+            <title>word_markdown</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+        <link rel="stylesheet" type="text/css" href="/static/bootstrap.css">
+    </head>
+    <body>
+
+
+    $if md:
+        <div class='dict_head'>
+            <a href='/dict'>return mainpage</a>
+        </div>
+        <br>
+        <div class='markdown'>
+            <div class='md_line'>
+                <span class='md_string'>$md[0]</span>
+            </div>
+            $for header,l2 in md[1]:
+                <div class="md_line" >
+                    <span class="md_string">$header[0] </span>$header[1]
+                </div>
+                <br>
+                <div class='md_line'>
+                    <span class='md_string'>$header[2]</span>
+                </div>
+                <br>
+                $for each in l2:
+                    <div class='md_line'>
+                        <span class='md_string'>$each</span>
+                    </div>
+                <br>
+        </div>
+    $else:
+        
+        <form class='well' action='/dict'>
+            <div>
+                <label>word</label>
+                <input type='text' value='' name='word' placeholder='input word to query'/>
+                <br>
+                <button type='submit' class='btn'>submit</button>
+            </div>
+        </form>
+
+    <div class='dict_foot'>
+        <span>powered by <span><a href='http://www.google.com/search?hl=en&tbs=dfn:1&q='>google dictonary</a>
+    </div>
+    </body>
+</html>

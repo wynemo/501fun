@@ -3,29 +3,36 @@
     <head>      
         <title>autopac</title>
         <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
-        <link href="/dropbox/web_develop/elastic/screen.css" type="text/css" rel="stylesheet" />               
+        <link rel="stylesheet" type="text/css" href="/static/bootstrap.css">
+        <!--<link href="/dp/web_develop/elastic/screen.css" type="text/css" rel="stylesheet" /> --> 
     </head>
     <body>
-    
+   <style type="text/css">
+   textarea {
+       border: 5px solid #eee; padding: 5px; width: 80%;
+       font: 14px/18px 'Helvetica', 'Arial', 'sans-serif';
+   }
+   </style>
        
         <form name="t_auth" action="/autopac" method="post">
-            <textarea class="input" style="max-height: 200px;" name="myarea">This textarea is going to grow when you fill it with text. Just type a few more words in it and you will see.</textarea>
+            <textarea class="input" style="max-height: 200px;" name="myarea">write white list,seperate with ","</textarea>
             <p>
             Proxy Type:
             <input type=radio name=ptype value="SOCKS5"> SOCKS5
-            <input type=radio name=ptype value="HTTP"> HTTP<p>
+            <input type=radio name=ptype value="HTTP" checked="checked"> HTTP<p>
             Port:
-            <input type=text name=port maxlength=5><p>
-            <button type="submit">sub</button><p>
+            <input type=text name=port maxlength=5 value="8080"><p>
+            <input type="checkbox" name="sptssl" value="1" checked>support https<p>
+            <button type="submit">submit</button><p>
 
         </form>
 
 
         <script type="text/javascript" 
-            src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"> 
+            src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"> 
         </script>
         <script 
-            src="/dropbox/web_develop/elastic/jquery.elastic.source.js" 
+            src="/dp/web_develop/elastic/jquery.elastic.source.js" 
             type="text/javascript" charset="utf-8">
         </script>
         <script type="text/javascript">

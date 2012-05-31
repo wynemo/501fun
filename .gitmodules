@@ -4,3 +4,6 @@
 [submodule "dictmd"]
 	path = dictmd
 	url = git://github.com/wynemo/dictmd.git
+[submodule "501fun_t_api"]
+	path = 501fun_t_api
+	url = git://github.com/wynemo/501fun_t_api.git

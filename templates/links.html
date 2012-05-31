@@ -1,4 +1,13 @@
-$def with (links)
-$for link,proxylink in links:
-    <div class="element"><a target="_blank" href="$link">$link</a>
-    <a target="_blank" href="$proxylink">proxy</a></div>
+$def with (texts)
+$for time1,id1,text1 in texts:
+    <div >
+        <div class='content'>
+            $for element1,attr1 in text1:
+                $if attr1:
+                    <a href='$element1' class='tl_link'>$element1</a>
+                $else:
+                    $element1
+        </div>
+        <div><span><span>$time1</span></span></div>
+        <a  onclick="return del(this.id);" href='/todo/delete' id='$id1' class='delete_links'>delete</a>
+    </div>

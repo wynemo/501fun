@@ -1,14 +1,29 @@
+$def with(mobile)
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>      
         <title>proxy</title>
-        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />            
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        $if mobile is not None:
+            <meta content='width=device-width; initial-scale=2.0; maximum-scale=1.0; user-scalable=0;' name='viewport' />
+        <link rel="stylesheet" type="text/css" href="/static/bootstrap.css">
+        <script type="text/javascript" 
+            src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"> 
+        </script>
     </head>
     <body>
 
 
-<form action='/proxy'><div><input type='text' value='' name='url'/><br/>
-<input type='submit' /></div></form>
+    <form action='/proxy'>
+        <div>
+            <input id='proxyurl' type='text' value='' name='url'/><br>
+            <input type="checkbox" name="nojs" value="1" checked>no js<br>
+            <input type='submit' />
+        </div>
+    </form>
+    <div>
+        <a onclick="$$('#proxyurl').val('');" href="#">clear url</a>
+    </div>
 
 
     </body>
