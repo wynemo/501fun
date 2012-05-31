@@ -10,9 +10,9 @@ def my_notfound():
     """Returns a `404 Not Found` error."""
     return web.notfound(render.custom404())
 
-urls = ('/','twitterapi.ttcbk.index',
-    '/auth','twitterapi.ttauth.auth',
-    '/api/(.*)','twitterapi.ttapi.api',
+urls = ('/','501fun_t_api.twitterapi.ttcbk.index',
+    '/auth','501fun_t_api.twitterapi.ttauth.auth',
+    '/api/(.*)','501fun_t_api.twitterapi.ttapi.api',
     '/dropbox(.*)','dropboxpublic.dppub.Dropbox0',
     '/dp(.*)','dropboxpublic.dppub.Dropbox',
     '/proxy($|/.*)','proxy.proxy.proxy', 
