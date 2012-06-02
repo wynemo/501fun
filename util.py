@@ -17,7 +17,7 @@ def get_chs_lnk(str1,charset,plus=1):
     import re,urllib
     u1 = str1.decode(charset)
     #o1 = re.search(ur'[\u4e00-\u9fff]+',u1)
-    o1 = re.search(ur'[^\w\~\#\:\.\?\+\=\&\%\@\-\\\/]+',u1)
+    o1 = re.search(ur'[^\w\~\#\:\.\?\+\=\&\%\@\-\\\/,]+',u1)
     if not o1:
         return str1
     while o1:
@@ -27,7 +27,7 @@ def get_chs_lnk(str1,charset,plus=1):
             _1 = urllib.quote(o1.group().encode(charset)).decode(charset)
         u1 = u1.replace(o1.group(),_1)
         #o1 = re.search(ur'[\u4e00-\u9fff]+',u1)
-        o1 = re.search(ur'[^\w\~\#\:\.\?\+\=\&\%\@\-\\\/]+',u1)
+        o1 = re.search(ur'[^\w\~\#\:\.\?\+\=\&\%\@\-\\\/,]+',u1)
 
     return u1.encode(charset)
 
