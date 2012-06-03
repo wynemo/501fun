@@ -13,24 +13,19 @@ def picType(s1):
         return 'gif'
     return None
 
-def get_chs_lnk(str1,charset,plus=1):
+def get_chs_lnk(str1,charset):
     import re,urllib
     u1 = str1.decode(charset)
-    #o1 = re.search(ur'[\u4e00-\u9fff]+',u1)
-    o1 = re.search(ur'[^\w\~\#\:\.\?\+\=\&\%\@\-\\\/,]+',u1)
-    if not o1:
+    pattern = ur'''[^\w\-\.\~\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=\%]'''
+    pattern = re.compile(pattern)
+    o1 = re.search(pattern,u1)
+    if o1 is None:
         return str1
-    while o1:
-        if plus == 1:
-            _1 = my_quote_plus(o1.group().encode(charset)).decode(charset)
-        else:
-            _1 = urllib.quote(o1.group().encode(charset)).decode(charset)
+    while not o1 is None:
+        _1 = my_quote_plus(o1.group().encode(charset)).decode(charset)
         u1 = u1.replace(o1.group(),_1)
-        #o1 = re.search(ur'[\u4e00-\u9fff]+',u1)
-        o1 = re.search(ur'[^\w\~\#\:\.\?\+\=\&\%\@\-\\\/,]+',u1)
-
+        o1 = re.search(pattern,u1)
     return u1.encode(charset)
-
 
 def stealStuff(str1,name):
     import minus
