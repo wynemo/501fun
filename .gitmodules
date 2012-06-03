@@ -7,3 +7,6 @@
 [submodule "501fun_t_api"]
 	path = 501fun_t_api
 	url = git://github.com/wynemo/501fun_t_api.git
+[submodule "pac"]
+	path = pac
+	url = git://github.com/wynemo/501fun_pac.git
