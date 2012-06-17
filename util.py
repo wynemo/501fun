@@ -15,7 +15,10 @@ def picType(s1):
 
 def get_chs_lnk(str1,charset):
     import re,urllib
-    u1 = str1.decode(charset)
+    try:
+        u1 = str1.decode(charset)
+    except: #maybe python can't handle this encoding,eg. windows-31j
+        return s1
     pattern = ur'''[^\w\-\.\~\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=\%]'''
     pattern = re.compile(pattern)
     o1 = re.search(pattern,u1)
