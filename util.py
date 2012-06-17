@@ -18,7 +18,7 @@ def get_chs_lnk(str1,charset):
     try:
         u1 = str1.decode(charset)
     except: #maybe python can't handle this encoding,eg. windows-31j
-        return s1
+        return str1
     pattern = ur'''[^\w\-\.\~\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=\%]'''
     pattern = re.compile(pattern)
     o1 = re.search(pattern,u1)
